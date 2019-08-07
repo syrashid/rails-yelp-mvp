@@ -1,18 +1,26 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>RailsYepMvp</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>RailsYepMvp</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-      <!-- Add these line for detecting device width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  </head>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <!-- Add these line for detecting device width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <script src="https://kit.fontawesome.com/721627a3c7.js"></script>
+</head>
 
-  <body>
-    <%= yield %>
-  </body>
+<body>
+  <nav class="navbar navbar-dark bg-dark justify-content-between">
+    <img src="https://www.competethemes.com/wp-content/uploads/2018/07/yelp-logo-1024x430.png" alt="" height="43" width="102">
+    <form class="form-inline">
+      <%= link_to "All Restaurants", restaurants_path, class: "btn btn-outline-light m-1"%>
+      <%= link_to "New Restaurant", new_restaurant_path, class: "btn btn-outline-light m-1" %>
+    </form>
+  </nav>
+  <%= yield %>
+</body>
 </html>

@@ -1,0 +1,11 @@
+<div class="container mt-3">
+  <% @restaurants.each do |r| %>
+    <div class="card border-secondary mb-3">
+      <h3 class="card-header"><%= link_to r.name, restaurant_path(r) %></h3>
+      <div class="card-body text-secondary">
+        <h5 class="card-title"><%= r.category %></h5>
+        <p class="card-text">Phone:&nbsp<%= r.phone_number %> &nbsp Address:&nbsp<%= r.address %></p>
+      </div>
+    </div>
+  <% end %>
+</div>
