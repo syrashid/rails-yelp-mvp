@@ -6,15 +6,23 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-puts "Beginning seed process, 10 restaurants"
+puts 'Beginning seed process, 10 restaurants'
 Restaurant.destroy_all
 
 10.times do
-  Restaurant.create(
+  @restaurant = Restaurant.create(
     name: Faker::Games::Pokemon.name,
     address: Faker::Address.street_address,
     phone_number: Faker::PhoneNumber.cell_phone,
-    category: %w[chinese italian japanese french belgian].sample)
+    category: %w[chinese italian japanese french belgian].sample
+  )
+  5.times do
+    @review = Review.create(
+      content: Faker::TvShows::RickAndMorty.quote,
+      rating: rand(6),
+      restaurant_id: @restaurant.id
+    )
+  end
 end
 
-puts "Ending seed process, Nico sucks"
+puts 'Ending seed process, Nico sucks'
