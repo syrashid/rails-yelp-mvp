@@ -2,7 +2,6 @@
     <div class="card border-secondary mb-3">
       <div class="card-header justify-content-between d-inline-flex align-items-center">
         <h1 class="m-0"><%= @restaurant.name %></h1>
-        <%= link_to "Add Review", new_restaurant_review_path(@restaurant), class: "btn btn-dark" %>
       </div>
 
       <div class="card-body text-secondary">
@@ -24,4 +23,14 @@
     <p class="m-0"><%= rev.content %></p>
   </div>
   <% end %>
+</div>
+
+<div class="container">
+  <div class="container">
+  <%= simple_form_for [@restaurant, @review] do |f| %>
+  <%= f.input :rating, collection: 0..5%>
+  <%= f.input :content %>
+  <%= f.submit "Submit", class: "btn btn-dark" %>
+<% end %>
+</div>
 </div>
