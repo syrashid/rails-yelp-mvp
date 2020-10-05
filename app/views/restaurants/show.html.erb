@@ -1,27 +1,37 @@
 <div class="container mt-3 mb-3">
-    <div class="card border-secondary mb-3">
-      <div class="card-header justify-content-between d-inline-flex align-items-center">
-        <h1 class="m-0"><%= @restaurant.name %></h1>
-        <%= link_to "Add Review", new_restaurant_review_path(@restaurant), class: "btn btn-dark" %>
-      </div>
+  <div class="card border-secondary mb-3">
+    <div class="card-header justify-content-between d-inline-flex align-items-center">
+      <h1 class="m-0"><%= @restaurant.name %></h1>
+    </div>
+    <div class="card-body text-secondary d-flex">
+      <div>
 
-      <div class="card-body text-secondary">
         <h3 class="card-title"><%= @restaurant.category %></h3>
         <h5 class="card-text">Phone:&nbsp<%= @restaurant.phone_number %> &nbsp Address:&nbsp<%= @restaurant.address %></h5>
         <img src="https://source.unsplash.com/random/600x400?restaurant" alt="Restaurant Photo">
       </div>
+      <div class= "flex-grow-1 p-5 d-flex flex-column justify-content-center">
+        <%= simple_form_for [@restaurant, @review] do |f| %>
+        <%= f.input :rating, collection: 0..5%>
+        <%= f.input :content %>
+        <%= f.submit "Submit", class: "btn btn-dark" %>
+        <% end %>
+      </div>
     </div>
-</div>
-
-<div class="container">
-  <% @restaurant.reviews.each do |rev| %>
-  <div class="card p-3 mb-2">
-    <div class="d-inline-flex mb-3">
-      <% rev.rating.times do %>
-      <i class="fas fa-star m-1" style="font-size:30px; color: red; "></i>
-      <% end %>
-    </div>
-    <p class="m-0"><%= rev.content %></p>
   </div>
-  <% end %>
+
+  <div class="container">
+    <% @restaurant.reviews.each do |rev| %>
+    <div class="card p-3 mb-2">
+      <div class="d-inline-flex mb-3">
+        <% rev.rating.times do %>
+        <i class="fas fa-star m-1" style="font-size:30px; color: red; "></i>
+        <% end %>
+      </div>
+      <p class="m-0"><%= rev.content %></p>
+    </div>
+    <% end %>
+  </div>
+
+
 </div>
